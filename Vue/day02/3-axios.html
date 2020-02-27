@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+		<meta name="viewport" content="width=device-width">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/axios.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div class="box">
+				<h2>近期值得看的国产剧</h2>
+				<ul>
+					<li v-for="item in guochan">
+						<img :src="item.cover.url" title="item.title">
+						{{item.title}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var vn = new Vue({
+				el:"#app",
+				data:{
+					guochan:[]
+					// zoyi:[],
+					// yimgmei:[]
+				},
+				mounted:function(){
+					// 国产
+					axios.get("json/dianshiju.json").then((data)=>{
+						console.log(data);
+						this.guochanju = data.data.subject_collection_items;
+					}).catch((error)=>{//失败的回调函数
+						console.log(error);
+					})
+				}
+			})
+		</script>
+	</body>
+</html>

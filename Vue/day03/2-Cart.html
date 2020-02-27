@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="app">
+			<table border="" cellspacing="" cellpadding="">
+				<h1>商品</h1>
+				<tr>
+					<th>商品名称</th>
+					<th>商品价格</th>
+					<th>商品数量</th>
+					<th>操作</th>
+				</tr>
+				<tr v-for="(item,index) in shangpin">
+					<td>{{item.nama}}</td>
+					<td>{{item.jiage}}</td>
+					<td><button @click="miuns(item)">-</button>{{item.shuliang}}<button @click="add(item)">+</button></td>
+					<td><button>加入购物车</button></td>
+				</tr>
+			</table>
+			<table border="" cellspacing="" cellpadding="">
+				<h1>购物车</h1>
+				<tr>
+					<th>商品名称</th>
+					<th>商品价格</th>
+					<th>商品数量</th>
+					<th>操作</th>
+				</tr>
+			</table>
+			
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#app",
+				data:{
+					shangpin:[
+						{"nama":"iphone","jiage":6998,"shuliang":1},
+						{"nama":"三星","jiage":4999,"shuliang":1},
+						{"nama":"小米10","jiage":3999,"shuliang":1},
+						{"nama":"华为","jiage":9999,"shuliang":1},
+						{"nama":"iwatach","jiage":4000,"shuliang":1}
+					]
+				},
+				methods:{
+					//减一
+					miuns:function(item){
+						if(item.shuliang >=1){
+							item.shuliang--;
+						}
+					},
+					//加一
+					add:function(item){
+						item.shuliang++;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
