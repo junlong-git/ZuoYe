@@ -8,6 +8,18 @@
 				padding: 0;
 				margin: 0;
 			}
+			ul {
+				display: flex;
+				overflow: scroll;
+			}
+			ul,li {
+				list-style: none;
+				height: 160px;
+			}
+			ul,li,img {
+				height: 143px;
+				margin: 5px;
+			}
 		</style>
 		<meta name="viewport" content="width=device-width">
 		<script type="text/javascript" src="../js/vue.js"></script>
@@ -17,10 +29,14 @@
 		<div id="app">
 			<div class="box">
 				<h2>近期值得看的国产剧</h2>
+			</div>	
+			<div>
 				<ul>
 					<li v-for="item in guochan">
 						<img :src="item.cover.url" title="item.title">
-						{{item.title}}
+						<sdiv>
+							{{item.title}}
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -35,9 +51,9 @@
 				},
 				mounted:function(){
 					// 国产
-					axios.get("json/dianshiju.json").then((data)=>{
+					axios.get("../json/dianshiju.json").then((data)=>{
 						console.log(data);
-						this.guochanju = data.data.subject_collection_items;
+						this.guochan = data.data.subject_collection_items;
 					}).catch((error)=>{//失败的回调函数
 						console.log(error);
 					})
