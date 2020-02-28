@@ -20,6 +20,7 @@
 				margin: 5px;
 			}
 		</style>
+		<meta name="referrer" content="no-referrer" />
 		<meta name="viewport" content="width=device-width">
 		<script type="text/javascript" src="../js/vue.js"></script>
 		<script type="text/javascript" src="../js/axios.min.js"></script>
@@ -33,7 +34,7 @@
 				<ul>
 					<li v-for="item in guochan">
 						<img :src="item.cover.url" title="item.title">
-						<sdiv>
+						<div>
 							{{item.title}}
 						</div>
 					</li>
