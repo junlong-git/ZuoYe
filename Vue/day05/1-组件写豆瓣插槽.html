@@ -28,9 +28,9 @@
 	</head>
 	<body>
 		<div id="app">
-			<zujian text="国产剧" :moban="guochanju"></zujian>
-			<zujian text="综艺节目" :moban="zongyiju"></zujian>
-			<zujian text="英美剧" :moban="yingmeiju"></zujian>
+			<zujian :moban="guochanju">国产剧</zujian>
+			<zujian :moban="zongyiju">综艺节目</zujian>
+			<zujian :moban="yingmeiju">英美剧</zujian>
 		</div>
 		<script type="text/javascript">
 			//孙子组件
@@ -53,9 +53,9 @@
 			// </li>
 			
 			var zujian = {
-				props:["text","moban"],
+				props:["moban"],
 				template:`<div class="box">
-						<h2>近期值得看的{{text}}</h2>
+						<h2>近期值得看的<slot></slot></h2>
 							<ul>
 								<sunzi v-for="(item,index) in moban" :i="item"></sunzi>
 							</ul>

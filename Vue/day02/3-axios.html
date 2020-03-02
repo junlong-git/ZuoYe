@@ -9,6 +9,7 @@
 				margin: 0;
 			}
 			ul {
+				padding-bottom: 65px;
 				display: flex;
 				overflow: scroll;
 			}
@@ -40,20 +41,62 @@
 					</li>
 				</ul>
 			</div>
+			<!-- 综艺节目 -->
+			<div class="box">
+				<h2>近期值得看的综艺节目</h2>
+			</div>	
+			<div>
+				<ul>
+					<li v-for="item in zongyi">
+						<img :src="item.cover.url" title="item.title">
+						<div>
+							{{item.title}}
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- 英美 -->
+			<div class="box">
+				<h2>近期值得看的英美剧</h2>
+			</div>	
+			<div>
+				<ul>
+					<li v-for="item in yingmei">
+						<img :src="item.cover.url" title="item.title">
+						<div>
+							{{item.title}}
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<script type="text/javascript">
 			var vn = new Vue({
 				el:"#app",
 				data:{
-					guochan:[]
-					// zoyi:[],
-					// yimgmei:[]
+					guochan:[],
+					zongyi:[],
+					yingmei:[]
 				},
 				mounted:function(){
-					// 国产
+					// 电视剧
 					axios.get("../json/dianshiju.json").then((data)=>{
 						console.log(data);
 						this.guochan = data.data.subject_collection_items;
+					}).catch((error)=>{//失败的回调函数
+						console.log(error);
+					})
+					//综艺节目
+					axios.get("../json/zongyi.json").then((data)=>{
+						console.log(data);
+						this.zongyi = data.data.subject_collection_items;
+					}).catch((error)=>{//失败的回调函数
+						console.log(error);
+					})
+					//英美剧
+					axios.get("../json/yingmei.json").then((data)=>{
+						console.log(data);
+						this.yingmei = data.data.subject_collection_items;
 					}).catch((error)=>{//失败的回调函数
 						console.log(error);
 					})
