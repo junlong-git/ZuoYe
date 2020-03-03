@@ -29,7 +29,7 @@
 				font-weight: normal;
 				justify-content: space-between;
 				height: 50px;
-				font-size: 30px;
+				font-size: 15px;
 				font-weight: bold;
 			}
 			#box2 {
@@ -62,20 +62,20 @@
 			<Modal width="30%" text="模态框" :visible.sync="xs">
 				<span>我是一个模态框,是否关掉窗口</span>
 				<span slot="footer">
-					<button type="button" class="btn btn1">取消</button>
-					<button type="button" class="btn btn2">确定</button>
+					<button type="button" class="btn btn1" @click="xs = false">取消</button>
+					<button type="button" class="btn btn2" @click="xs = false">确定</button>
 				</span>
 			</Modal>
-			<button>显示模态框</button>
+			<button @click="showm">显示模态框</button>
 		</div>
 		
 		<!-- 模板  --  template-->
 		<script type="text/template" id="template">
-			<div class="box">
-				<div id="box" :style="{'width': width}">
+			<div class="box" v-if="visible" @clickk="hiddenm">
+				<div id="box" :style="{'width': width}" @click.stop>
 					<div id="box1">
 						<span>{{text}}</span>
-						<span>×</span>
+						<span @click="hiddenm">×</span>
 					</div>
 					<div id="box2">
 						<slot></slot>
@@ -91,18 +91,24 @@
 		<script type="text/javascript">
 			//1-创建全局模态框  Modal
 			Vue.component("Modal",{
-				props:["width","text"],
-				template:`#template`
+				props:["width","text","visible"],
+				template:`#template`,
+				methods:{
+					hiddenm:function(){
+						this.$emit('update:visible');
+					}
+				}
 			})
 			
-			/*************************************/ 
 			var vn = new Vue({
 				el:"#app",
 				data:{
-					
+					xs:false
 				},
-				components:{
-					
+				methods:{
+					showm:function(){
+						this.xs=true;
+					}
 				}
 			})
 		</script>
