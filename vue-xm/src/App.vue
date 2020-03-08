@@ -41,6 +41,7 @@ scoped="scoped" 该样式只在本页面起作用
 	}
 
 #nav {
+	background: white;
 	font-size: 12px;
 	position: fixed;
 	bottom: 0;
