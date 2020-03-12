@@ -6,7 +6,7 @@ import store from './store'
 //引入 element ui
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-//引入后注册 ElementUI
+//注册 ElementUI
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false

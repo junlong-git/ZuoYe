@@ -1,34 +1,27 @@
 <template>
 	<div class="box">
-		<!-- <menu></menu> -->
-		<div class="box-zuo">菜单</div>
+		<Menu></Menu>
 		<div class="box-you">
-			<!-- <content></content> -->
-			<!-- <navbar></navbar> -->
-			<div class="box-tou">
-				<div class="box-tou-home">首页</div>
-				<div class="box-tou-img">图片</div>
-			</div>
-			<div class="box-main">
-				<router-view></router-view>
-			</div>
+			<Navbar></Navbar>
+			<Content></Content>
 		</div>
 	</div>
 </template>
 
 <script>
 	//引入 菜单，头部，主体部分的组件
-	// import menu from './layoutzj/menu.vue';
-	// import content from './layoutzj/content.vue';
-	// import navbar from './layoutzj/navbar.vue';
-	// export default {
-	// 	name:'layout',
-	// 	layoutzj:{
-	// 		menu,
-	// 		content,
-	// 		navbar
-	// 	}
-	// }
+	import Menu from './components/Menu.vue';
+	import Navbar from './components/Navbar.vue';
+	import Content from './components/Content.vue';
+	
+	export default {
+		name:'layout',
+		components:{
+			Menu,
+			Navbar,
+			Content
+		}
+	}
 </script>
 
 <style lang="scss" scoped="scoped">
@@ -47,6 +40,7 @@
 				bottom: 0;
 				color: white;
 				overflow: hidden;
+				text-align: center;
 			}
 			.box-you {
 				clear: both;
